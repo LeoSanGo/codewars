@@ -10,7 +10,7 @@ function expandedForm(num) {
   return arrayExpanded.toString().replace(/,/gi, ' + ');
 }
 
-const num = 222;
+const num = 0222;
 console.log(expandedForm(num));
 
 /* 
@@ -26,8 +26,42 @@ const expandedForm = n => n.toString()
 
 ----------------------------------------
 
+const expandedForm = n => n.toString()
+      .split('')
+      .reverse()
+      .map((a, i) => a * (10 ** i))
+      .filter(a => a > 0)
+      .reverse()
+      .join(' + ');
 
+---------------------------------------------
+function expandedForm(num) {
+  return String(num)
+          .split("")
+          .map((num, index, arr) => num + "0".repeat(arr.length - index -1 ))
+          .filter((num) => Number(num) != 0)
+          .join(" + ")
+}
 
+----------------------------------------------
+var expandedForm = (num) => {
+  var arr = num.toString().split('').reverse();
+  var result = [];
+  for(var i = 0; i < arr.length; i++){
+    arr[i] == 0 ? result.push() : result.push(arr[i] + ('0'.repeat(i)))
+  }
+  return result.reverse().join(' + ')
+}
+
+-----------------------------------------
+function expandedForm(num) {
+  if (num < 10) return `${num}`;
+  let over = num % (Math.pow(10, (num.toString().length - 1)));
+  if (!over) return `${num}`;
+  return `${num-over} + ${expandedForm(over)}`;
+}
+
+----------------------------------------------
 const expandedForm = (num) => {
   let pow = [];
   let decimal = [];
