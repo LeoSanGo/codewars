@@ -17,7 +17,7 @@ const str = 'testeCamelCase';
 console.log(breakCamelCase(str));
 
 /* 
-Other Solutions
+Other Solutions073
 function solution(string) {
   return(string.replace(/([A-Z])/g, ' $1'));
 }
