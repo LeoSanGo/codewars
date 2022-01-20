@@ -15,22 +15,11 @@ Example:
 */
 
 longestPalindrome=function(s){
-  let longest = 0;
-  let length = s.length;
+  var l = 0;
+  for (var i = 0; i<s.length; i++)
+    for(var j = i; j<=s.length; j++)
+      if(s.substring(i,j) === s.substring(i,j).split('').reverse().join('') && s.substring(i,j).length > l)
+        l = s.substring(i,j).length;
 
-  for(let i=0; i < length; i++){
-    for(let j = i+1; j <= length; j++) {
-      let str = s.slice(i,j);
-      let l = str.length
-      if(isPalindrome(str) && longest < l) {
-        longest = l;
-      }
-    }
-  }
-  return longest;
-}
-
-function isPalindrome(s) {
-  const arr = s.split("");
-  return s == arr.reverse().join("");
+  return l;
 }
