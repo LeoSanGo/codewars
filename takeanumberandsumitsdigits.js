@@ -43,7 +43,7 @@ function sumDigPow(a, b) {
 }
 
 console.log(sumDigPow(1, 100));
-
+//MOdfy test GIT
 
 /* 
 
