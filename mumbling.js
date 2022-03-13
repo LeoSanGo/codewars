@@ -26,7 +26,7 @@ function accum(s) {
 
 function accum(s) {
   return s.split('').map((x,index) => x.toUpperCase()+Array(index+1).join(x.toLowerCase())).join('-');
-}
+}- Try understand the repetition
 
 -------------------------------------------------
 
@@ -45,7 +45,7 @@ function accum (s) {
   return [...s].map((element, index) => {
     return element.toUpperCase() + element.toLowerCase().repeat(index);
   }).join('-');
-}
+} - used spred operator and concat repetition with index
 
 ---------------------------------------------
 
@@ -67,7 +67,7 @@ function accum(s) {
     .split('')
     .map((s, i) => s.toUpperCase() + s.toLowerCase().repeat(i))
     .join('-')
-}
+} - one of best solution
 
 -----------------------------------------------------------
 
