@@ -11,5 +11,13 @@ cachedFunction('foo', 'bar'); // complex function should not be invoked again, i
 cachedFunction('foo', 'baz'); // should be executed, because the method wasn't invoked before with these arguments */
 
 function cache(func) {
-  // do your magic here
+  let cache = {};
+  return function() {
+    let key = JSON.stringify(arguments);
+    if (key in cache) {
+      return cache[key];
+    } else {
+      return cache[key] = func.apply(this, arguments);
+    }
+  };
 }
