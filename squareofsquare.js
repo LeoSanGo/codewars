@@ -20,6 +20,9 @@ Examples
 26  =>  false
 
 */
-var isSquare = function(n){
-  return false; // fix me
-}
+var isSquare = function (n) {
+
+  return n % 2 === 0 ? true : false; // fix me
+};
+
+console.log(isSquare(9));
