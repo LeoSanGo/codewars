@@ -19,3 +19,26 @@ function bmi(weight, height) {
   else if (bmi2 <= 30.0) return 'Overweight';
   else if (bmi2 > 30) return 'Obese';
 }
+
+/* 
+const bmi = (w, h, bmi = w/h/h) =>  bmi <= 18.5 ? "Underweight" :
+                                    bmi <= 25 ? "Normal" :
+                                    bmi <= 30 ? "Overweight" : "Obese";
+
+                                    function bmi(weight, height) {
+  
+var bmi  = weight/(height*height);
+
+ return bmi < 18.5 ? "Underweight" : bmi <=25 ? "Normal" : bmi <= 30 ? "Overweight" : "Obese";
+
+}
+
+function bmi(weight, height) {
+  let b = weight / height**2;
+  return b <= 18.5 ? 'Underweight' : b <= 25.0 ? 'Normal' : b <= 30.0 ? 'Overweight' : 'Obese';
+}
+
+function bmi(weight, height, index = weight/(height**2)) {
+  return index <= 18.5 ? 'Underweight' : index <= 25.0 ? "Normal" : index <= 30 ? 'Overweight' : 'Obese';
+} // dupa
+*/
