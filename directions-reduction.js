@@ -38,22 +38,57 @@ Not all paths can be made simpler. The path ["NORTH", "WEST", "SOUTH", "EAST"] i
 if you want to translate, please ask before translating.
 */
 
-function dirReduc(arr){
-  let newArr = [];
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i] === 'NORTH' && arr[i + 1] === 'SOUTH') {
-      continue;
-    } else if (arr[i] === 'SOUTH' && arr[i + 1] === 'NORTH') {
-      continue;
-    } else if (arr[i] === 'EAST' && arr[i + 1] === 'WEST') {
-      continue;
-    } else if (arr[i] === 'WEST' && arr[i + 1] === 'EAST') {
-      continue;
-    } else {
-      newArr.push(arr[i]);
-    }
-  }
-  return newArr;
+function dirReduc(plan) {
+  var opposite = {
+    'NORTH': 'SOUTH', 'EAST': 'WEST', 'SOUTH': 'NORTH', 'WEST': 'EAST'};
+  return plan.reduce(function(dirs, dir){
+      if (dirs[dirs.length - 1] === opposite[dir])
+        dirs.pop();
+      else
+        dirs.push(dir);
+      return dirs;
+    }, []);
 }
 
-console.log(dirReduc(['NORTH', 'SOUTH', 'SOUTH', 'EAST', 'WEST', 'NORTH', 'WEST']));
+/* 
+Other solutions
+
+function dirReduc(arr) {
+  var str = arr.join(''), pattern = /NORTHSOUTH|EASTWEST|SOUTHNORTH|WESTEAST/;
+  while (pattern.test(str)) str = str.replace(pattern,'');
+  return str.match(/(NORTH|SOUTH|EAST|WEST)/g)||[];
+}
+
+function dirReduc(arr){
+  var opposite = { "SOUTH":"NORTH", "NORTH":"SOUTH", "WEST":"EAST", "EAST":"WEST"}
+  return arr.reduce(function (a, b, i) {
+    opposite[a.slice(-1)] === b ? a.pop() : a.push(b)
+    return a
+  }, [])
+}
+
+function dirReduc(arr){
+  var count = 0;
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i] === "WEST" && arr[i+1] === "EAST" ||
+        arr[i] === "EAST" && arr[i+1] === "WEST" ||
+        arr[i] === "NORTH" && arr[i+1] === "SOUTH" ||
+        arr[i] === "SOUTH" && arr[i+1] === "NORTH") {
+        arr.splice(i, 2);
+        count++;
+        i--;
+    }
+  }
+  return count === 0 ? arr : dirReduc(arr);
+}
+
+const dirReduc = arr =>
+  arr.reduce((pre, val) => pre[pre.length - 1] === {NORTH : `SOUTH`, SOUTH : `NORTH`, EAST : `WEST`, WEST : `EAST`}[val] ? pre.slice(0, -1) : [...pre, val], []);
+
+  function dirReduc(arr){
+  pat = /(NORTHSOUTH|SOUTHNORTH|EASTWEST|WESTEAST)/
+  way = arr.join('');
+  while( pat.test(way) ) way = way.replace(pat,'');
+  return way.match(/(NORTH|SOUTH|EAST|WEST)/g)||[]
+}
+*/
