@@ -34,3 +34,16 @@ function calculateYears(principal, interest, tax, desired) {
   }
   return years;
 }
+
+/* 
+Other Solutions
+
+
+function calculateYears(P,I,T,D) { return Math.ceil( Math.log(D/P) / Math.log1p(I*(1-T)) ); }
+
+const calculateYears = (principal, interest, tax, desired) =>
+  Math.ceil(Math.log(desired / principal) / Math.log(interest * (1 - tax) + 1));
+
+
+
+*/
