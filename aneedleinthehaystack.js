@@ -22,4 +22,6 @@ function findNeedle(haystack) {
   let pos = haystack.findIndex( el => el === "needle");
   return 'found the needle at position ' + pos;
 }
+
+
 */
